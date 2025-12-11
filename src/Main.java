@@ -1,6 +1,6 @@
 /**
  * Main runnable class.
- *
+ * <p>
  * see WhiteBoard.java for more info.
  */
 

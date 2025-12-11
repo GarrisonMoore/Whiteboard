@@ -195,23 +195,37 @@ public class WhiteBoard extends JFrame implements MouseMotionListener {
 
         /** Main 'canvas' panel, where drawing takes place
          * @Overrides paintComponent() method from JPanel class.
+         *
+         * Implements buffer-resizing logic
+         * - creates a new buffer that matches the dimensions of the panel after resizing.
          */
         canvas = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // If the buffer is null, create a new buffer
-                if (buffer == null) {
-                    // set dimensions of the buffer to be the same as the frame and set color space to RGB
-                    buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-                    // create a graphics object from the buffer
-                    Graphics2D g2 = buffer.createGraphics();
+                // if the buffer is null and is smaller than the panel dimensions, create a new buffer
+                if (buffer == null || buffer.getWidth() < getWidth() || buffer.getHeight() < getHeight()) {
+
+                    // match new dimensions to the panel
+                    int newWidth = getWidth();
+                    int newHeight = getHeight();
+
+                    // fill the width and height of the new buffer with the largest dimension of the current buffer
+                    if (buffer != null) {
+                        newWidth = Math.max(newWidth, buffer.getWidth());
+                        newHeight = Math.max(newHeight, buffer.getHeight());
+                    }
+
+                    // create the new, larger buffer
+                    BufferedImage newBuffer = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
+                    Graphics2D g2 = newBuffer.createGraphics();
                     // fill background white
                     g2.setColor(Color.WHITE);
                     // fills the dimensions of the frame with the buffered image
                     g2.fillRect(0, 0, getWidth(), getHeight());
                     // dispose of the graphics object after it is used, necessary for performance / stability.
                     g2.dispose();
+                    buffer = newBuffer;
                 }
                 // draw the new line segment onto the buffer (save it to memory)
                 // Draw this buffer to the screen. Setting x and y to 0 will lock the canvas to the top left corner of the panel
