@@ -23,11 +23,6 @@
  * This code builds on these resources.
  */
 
-// Source - https://stackoverflow.com/q
-// Posted by Jean Fredrik Leirtrø, modified by community. See post 'Timeline' for change history
-// Retrieved 2025-12-09, License - CC BY-SA 3.0
-//
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
