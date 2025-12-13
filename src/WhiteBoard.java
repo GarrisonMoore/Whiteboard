@@ -72,6 +72,7 @@ public class WhiteBoard extends JFrame implements MouseMotionListener {
     public JPanel buttonpanel = new JPanel();
     public JPanel sizeButtons = new JPanel();
     public JPanel colorButtons = new JPanel();
+    // canvas panel
     public JPanel canvas = new JPanel();
 
     // variable for the line thickness, used in 'size' buttons
@@ -94,7 +95,7 @@ public class WhiteBoard extends JFrame implements MouseMotionListener {
     BufferedImage buffer;
 
 
-    /** run() method
+    /** Whiteboard() method
      * Initializes and sets up the user interface for the WhiteBoard application.
      * The `run` method configures the main JFrame, sets its layout, and integrates the components necessary
      * for the WhiteBoard functionality. Components include buttons for changing drawing size and color,

@@ -3,7 +3,8 @@
  * <p>
  * see WhiteBoard.java for more info.
  */
-
+import javax.swing.*;
+import java.awt.*;
 import javax.swing.*;
 
 public class Main {
@@ -21,7 +22,6 @@ public class Main {
         } catch (Exception e) {
             // If Nimbus isn't available, keep the default
         }
-
         // Create the UI on the Event Dispatch Thread
         SwingUtilities.invokeLater(WhiteBoard::new);
     }
